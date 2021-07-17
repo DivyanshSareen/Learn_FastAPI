@@ -14,7 +14,7 @@ def preProcess_data(text): #cleaning the data
     new_text = re.sub('rt', '', new_text)
     return new_text
 
-app = FastAPI()
+app = FastAPI(process.env.PORT || 3000)
 
 data = pd.read_csv('archive/Sentiment.csv')
 tokenizer = Tokenizer(num_words=2000, split=' ')
