@@ -14,7 +14,10 @@ def preProcess_data(text): #cleaning the data
     new_text = re.sub('rt', '', new_text)
     return new_text
 
-app = FastAPI(process.env.PORT || 3000)
+app = FastAPI()
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
 
 data = pd.read_csv('archive/Sentiment.csv')
 tokenizer = Tokenizer(num_words=2000, split=' ')
